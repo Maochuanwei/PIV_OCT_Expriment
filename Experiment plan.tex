@@ -1,0 +1,243 @@
+\documentclass[12pt]{article}
+\usepackage{ctex} % 支持中文
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{float} % 用于控制表格位置
+\usepackage{longtable}
+
+
+\geometry{a4paper, margin=0.4in,bottom=0.5in}
+
+\title{OCT-PIV流速测量实验}
+\author{毛川伟}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{研究背景}
+
+PIV，全称为微粒子图像测速。基本原理是通过一个相机连续拍摄在溶液当中的示踪粒子。通过对比连续拍摄到的图片，计算前一张图片到后一张图片的相关性。找到相关位移。然后通过标定，得到实际和像素之间的关系
+通过这个关系来计算流速。下面是PIV的基本原理图
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/PIV_principles.png}
+    \caption{粒子图像测速技术工作原理示意图}
+    
+    
+\end{figure}
+
+PIV的计算公式如下，
+
+
+    \begin{equation}
+        R(x,y)=\sum_{i=-L}^L\sum_{j=-L}^LI(i,j)I'(i+x,j+y)
+    \end{equation}
+
+    其中$I(.)$和$I'(.)$分别为前后帧图像提取的窗口像素灰度值。第一幅图中的查询窗口称为模板，利用模板在第二幅图像的搜索范围中进行不断的遍历和匹配，就
+    可以得到相关平面
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.8\textwidth]{Images/互相关算法示意图.png}
+        \caption{互相关 PIV 算法的计算原理示意图}
+        
+        
+    \end{figure}
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.8\textwidth]{Images/互相关示意图.png}
+        \caption{互相关算法计算的互相关平面}
+        
+    \end{figure}
+    
+
+\section{实验目的}
+\begin{itemize}
+    \item 测试PIV测速的可行性
+    \item 验证PIV
+
+\end{itemize}
+
+\section{实验内容}
+\begin{itemize}
+
+    \item 制作玻璃管流道
+    \item 使用聚苯乙烯微球作为示踪粒子，配置聚苯乙烯微球溶液
+    \item 设置不同的灌流流速，使用OCT设备采集数据
+    \item 使用PIVlab工具包计算流场和速度
+    \item 将得到的流场和预先设置值进行对比，计算均值和方差，分析该方法得到的结果
+\end{itemize}
+
+
+
+\section{实验材料和设备}
+\subsection{材料清单}
+
+
+
+{
+    \footnotesize
+    \begin{longtable}{@{} p{5cm} p{10cm} @{}}
+        \toprule
+        \textbf{材料} & \textbf{备注} \\ 
+        \midrule
+        
+        
+        聚苯乙烯微球        & 用来作为示踪粒子\\
+        玻璃管两根          & 作为微流道，一根备用\\
+        橡胶管两条              & 用来连接注射器，微流道，和灌流器 \\
+        灌流器              & 用来设置灌流流速 \\
+        琼脂粉              & 和水混合加热到沸腾，等到30-40°冷却就会凝固\\
+        一个离心管的瓶盖    & 用于放置玻璃管\\
+        微波炉              & 用于加热琼脂 \\
+        天平                 & 在使用之前需要在放上称量纸的情况下调零 \\ 
+        移液枪               & 在配置材料实验室里 \\ 
+        离心管（2个）        & 用于配置聚苯乙烯微球溶液 \\ 
+        称量纸               & 方便倒出材料   \\
+        5ml 注射器（4个）    & 存放聚苯乙烯微球溶液 \\ 
+        灌流器               & 位于三楼实验室抽屉 \\ 
+        空心橡胶管（2条）    & 长度不能够太短 \\ 
+        3D 打印注射器喷头    & 红色，套在注射器上用于连接橡胶管 \\ 
+        纯净纸巾             & 用来擦拭漏出的溶液 \\ 
+        
+        一把剪刀            & 用来剪断橡胶管 \\
+        
+        \bottomrule
+        \caption{实验材料列表} \\
+    \end{longtable}
+}
+
+
+
+
+\section{实验流程}
+
+\subsection{准备材料}
+\begin{itemize}
+  
+    \item 提前带上U盘或者移动硬盘
+    \item 提前预约实验室
+    \item 提前打开实验室的新风系统（中间控制面板），以及空调系统（在门左右边）
+    \item 带上聚苯乙烯微球材料
+\end{itemize}
+\subsection{配材料}
+\begin{enumerate}
+    \item 琼脂溶液的配置
+    \begin{itemize}
+        \item 百分之5的琼脂溶液，取10g琼脂粉，灌水到200ml
+        \item 加入一点牛奶（不能够加太多，会降低透光度）
+        \item 使用微波炉加热琼脂到沸腾
+       
+
+    \end{itemize}
+    \item 制作带缺口瓶盖
+    \begin{itemize}
+        \item 取下一个离心管的瓶盖
+        \item 使用小刀刻出缺口
+    \end{itemize}
+
+    \item 配置聚苯乙烯微球溶液
+    \begin{itemize}
+        \item 配置百分之10质量的微球溶液
+        \item 取5g聚苯乙烯微球，使用移液枪添加45ml取离子水
+        \item 需要搅拌均匀
+    \end{itemize}
+\end{enumerate}
+
+\subsection{开始实验}
+\begin{enumerate}
+    \item 材料的装配
+    \begin{itemize}
+   
+    \item 使用5ml的注射器吸入聚苯乙烯微球溶液
+    \item 将材料都放到同一个实验架子上，并做好区分，这样不用到处找材料
+    
+    \end{itemize}
+
+    \item 制作直流通道
+    \begin{itemize}
+        \item 从微波炉当中取出溶液，倒入瓶盖当中并等待凝固（注意琼脂不要太厚，应该稍微覆盖即可，否则会降低透光率）
+        \item 连接金属管和橡胶管
+    \end{itemize}
+
+    \item 搭建灌流平台
+    \begin{itemize}
+        
+        \item 将直流通道和灌流设备连接起来
+        \item 往流道里面注入溶液
+        \item 设置不同的灌流流速
+        
+       这个位置用来放置流速表格，流速尽量设置得比较低一点，可以用来验证方法的可行性
+        
+
+
+    
+    \end{itemize}
+
+    \item 开始采集数据
+    \begin{itemize}
+        \item 等到流速稳定之后开始采集数据
+        \item 找到像，我们应该找到正像，通过显微镜镜头找到正像（从摄像头看，显微镜达到对扫描物体的聚焦比较清楚），然后将物体移动到强度最高的位置（注意，会呈现两个像，一个正像一个反像，这是由于光程差存在正反
+        （注意：对于具有强反射率的玻璃表面，我们的成像可能会存在两条横杠，这个玻璃的反光，可能会影响最终的成像）
+        \item 调整像素个数，让成像更加清晰，或者通过固定像素实际大小和视场来自动得到像素值(会导致文件太大，所以需要提前准备磁盘，读写速度较大的磁盘)
+        \item 开始采集3D散斑数据，建立excle表格记录每个灌流量的采集数据（包括流速设置，OCT参数，显微镜照片）
+        \item 每个灌流量，需要重复采集4次（为了后面建立方差和均值模型）
+        \item 实验采集数据完毕
+    \end{itemize}
+
+    \item 实验结束准备
+    \begin{itemize}
+        \item 将不要的东西都扔到垃圾桶当中
+        \item 将灌流器收起来放到抽屉当中
+        \item 关闭实验室的新风系统，关闭实验室的空调（新风系统显示连锁关闭，空调在左右门）
+        \item 将OCT设备关机（注意，先关闭计算机，才关闭OCT设备）
+        \item  将垃圾到到6楼的垃圾筒当中去
+    \end{itemize}
+
+    \section{数据处理部分}
+    \subsection{Matlab处理部分}
+    \begin{enumerate}
+        \item 将从公司得到的数据放到自己电脑上
+        \item 先运行制作掩膜的代码，会自动保存到电脑中
+        \item 然后运行制作CC值的代码，只要指定文件夹，其他的都是自动运行
+        \item 然后是CC值处理代码，会保存未滤波后滤波后的图片（可以添加功能，将这个滤波后的CC值也保存一下）
+        \item 处理完毕
+    \end{enumerate}
+    \subsection{Amira处理部分}
+    \begin{enumerate}
+        \item 将图片导入到Amira当中，并打上标签，备注是什么灌流量的
+        \item 选择伪彩图映射函数Physical，并不断调整对比度，直到达到一个看起来像一个流场的环境，并能够区分不同组别的灌流量
+        \item 使用不同窗口进行展示，然后使用软件内截图功能以及文本标记功能对图像打上标签（使用外部截图的分辨率太低，存在对齐问题，不推荐）
+    \end{enumerate}
+    
+
+\end{enumerate}
+
+
+
+
+
+\section{可能的意外与应对措施}
+\begin{itemize}
+
+    \item 配材料室没开门（等待 可能有人在休息）
+    \item 师兄没有时间做实验（等待下一次做实验）
+    \item 中间遇到的会议（看情况，如果会议紧急的话先去开会议，否则可以请假）
+\end{itemize}
+
+\section{参考文献}
+
+\begin{itemize}
+    \item 基于 CCd-OCTA 的三维流场成像技术及其对3D打印类血管网的研究 
+    \item Vista
+    \item Complex differential variance algorithm for optical coherence tomography angiography
+    \item Improved motion contrast and processing efficiency in OCT angiography using complex-correlation algorithm
+\end{itemize}
+
+\end{document}
