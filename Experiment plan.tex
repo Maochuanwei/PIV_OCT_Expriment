@@ -28,7 +28,6 @@ PIV，全称为微粒子图像测速。基本原理是通过一个相机连续�
     \includegraphics[width=0.8\textwidth]{Images/PIV_principles.png}
     \caption{粒子图像测速技术工作原理示意图}
     
-    
 \end{figure}
 
 PIV的计算公式如下，
@@ -71,15 +70,11 @@ PIV的计算公式如下，
     \item 使用聚苯乙烯微球作为示踪粒子，配置聚苯乙烯微球溶液
     \item 设置不同的灌流流速，使用OCT设备采集数据
     \item 使用PIVlab工具包计算流场和速度
-    \item 将得到的流场和预先设置值进行对比，计算均值和方差，分析该方法得到的结果
+    \item 将得到的流场和预先流速设置值进行对比，计算均值和方差，分析该方法得到的结果
 \end{itemize}
-
-
 
 \section{实验材料和设备}
 \subsection{材料清单}
-
-
 
 {
     \footnotesize
@@ -94,6 +89,8 @@ PIV的计算公式如下，
         橡胶管两条              & 用来连接注射器，微流道，和灌流器 \\
         灌流器              & 用来设置灌流流速 \\
         琼脂粉              & 和水混合加热到沸腾，等到30-40°冷却就会凝固\\
+        一把小刀            & 用来制作瓶盖缺口      \\
+        一把剪刀            & 用来剪断橡胶管    \\
         一个离心管的瓶盖    & 用于放置玻璃管\\
         微波炉              & 用于加热琼脂 \\
         天平                 & 在使用之前需要在放上称量纸的情况下调零 \\ 
@@ -105,9 +102,6 @@ PIV的计算公式如下，
         空心橡胶管（2条）    & 长度不能够太短 \\ 
         3D 打印注射器喷头    & 红色，套在注射器上用于连接橡胶管 \\ 
         纯净纸巾             & 用来擦拭漏出的溶液 \\ 
-        
-        一把剪刀            & 用来剪断橡胶管 \\
-        
         \bottomrule
         \caption{实验材料列表} \\
     \end{longtable}
@@ -115,12 +109,10 @@ PIV的计算公式如下，
 
 
 
-
 \section{实验流程}
 
 \subsection{准备材料}
 \begin{itemize}
-  
     \item 提前带上U盘或者移动硬盘
     \item 提前预约实验室
     \item 提前打开实验室的新风系统（中间控制面板），以及空调系统（在门左右边）
@@ -128,19 +120,6 @@ PIV的计算公式如下，
 \end{itemize}
 \subsection{配材料}
 \begin{enumerate}
-    \item 琼脂溶液的配置
-    \begin{itemize}
-        \item 百分之5的琼脂溶液，取10g琼脂粉，灌水到200ml
-        \item 加入一点牛奶（不能够加太多，会降低透光度）
-        \item 使用微波炉加热琼脂到沸腾
-       
-
-    \end{itemize}
-    \item 制作带缺口瓶盖
-    \begin{itemize}
-        \item 取下一个离心管的瓶盖
-        \item 使用小刀刻出缺口
-    \end{itemize}
 
     \item 配置聚苯乙烯微球溶液
     \begin{itemize}
@@ -148,6 +127,20 @@ PIV的计算公式如下，
         \item 取5g聚苯乙烯微球，使用移液枪添加45ml取离子水
         \item 需要搅拌均匀
     \end{itemize}
+
+    \item 琼脂溶液的配置
+    \begin{itemize}
+        \item 百分之5的琼脂溶液，取10g琼脂粉，灌水到200ml
+        \item 加入一点牛奶（不能够加太多，会降低透光度）
+        \item 使用微波炉加热琼脂到沸腾
+    \end{itemize}
+
+    \item 制作带缺口瓶盖
+    \begin{itemize}
+        \item 取下一个离心管的瓶盖
+        \item 使用小刀刻出缺口
+    \end{itemize}
+
 \end{enumerate}
 
 \subsection{开始实验}
@@ -156,7 +149,7 @@ PIV的计算公式如下，
     \begin{itemize}
    
     \item 使用5ml的注射器吸入聚苯乙烯微球溶液
-    \item 将材料都放到同一个实验架子上，并做好区分，这样不用到处找材料
+    \item 将材料都放到同一个实验架子上，并做好区分(做好这一步，不同到处找材料)
     
     \end{itemize}
 
@@ -182,26 +175,13 @@ PIV的计算公式如下，
            \toprule
            \textbf{OCT数据序号} & \textbf{流速 mm/s} & \textbf{灌流量 ul/min} \\ 
            \midrule
-           1 & 0 & 0 \\
-           2 & 0 & 0 \\
-           3 & 0 & 0 \\
-           4 & 0 & 0 \\
-           5 & 1 & 38.17 \\
-           6 & 1 & 38.17 \\
-           7 & 1 & 38.17 \\
-           8 & 1 & 38.17 \\
-           9 & 2 & 76.34 \\
-           10 & 2 & 76.34 \\
-           11 & 2 & 76.34 \\
-           12 & 2 & 76.34 \\
-           13 & 3 & 114.51 \\
-           14 & 3 & 114.51 \\
-           15 & 3 & 114.51 \\
-           16 & 3 & 114.51 \\
-           17 & 4 & 152.68 \\
-           18 & 4 & 152.68 \\
-           19 & 5 & 152.68 \\
-           20 & 5 & 152.68 \\
+           01-04 & 0 & 0 \\
+           05-08 & 1 & 38.17 \\
+           09-12 & 2 & 76.34 \\
+           13-16 & 3 & 114.51 \\
+           17-20 & 4 & 152.68 \\
+           21-24 & 5 & 190.85 \\
+           
            \bottomrule
            \caption{流速设置表格} \\
        \end{longtable}
@@ -229,7 +209,8 @@ PIV的计算公式如下，
         \item 将OCT设备关机（注意，先关闭计算机，才关闭OCT设备）
         \item  将垃圾到到6楼的垃圾筒当中去
     \end{itemize}
-
+    \end{enumerate}
+    
     \section{数据处理}
 
 
@@ -283,9 +264,8 @@ PIV的计算公式如下，
 
 \begin{itemize}
     \item 基于 CCd-OCTA 的三维流场成像技术及其对3D打印类血管网的研究 
-    \item Vista
-    \item Complex differential variance algorithm for optical coherence tomography angiography
-    \item Improved motion contrast and processing efficiency in OCT angiography using complex-correlation algorithm
+    \item VisTa
+    \item Optical coherence tomography based particle image velocimetry (OCT-PIV) of polymer flows
 \end{itemize}
 
 \end{document}

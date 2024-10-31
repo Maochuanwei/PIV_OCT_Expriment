@@ -1,2 +1,5 @@
 Experiment plan.synctex.gz
 Experiment plan.pdf
+*.log
+*.aux
+*.out
