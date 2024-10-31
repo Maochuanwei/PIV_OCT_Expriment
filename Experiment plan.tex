@@ -7,6 +7,7 @@
 \usepackage{hyperref}
 \usepackage{float} % 用于控制表格位置
 \usepackage{longtable}
+\usepackage{amssymb} % 导入 amssymb 包以使用 \checkmark 和 \square
 
 \geometry{paperwidth=21cm, paperheight=250cm, margin=1in}
 
@@ -43,14 +44,14 @@ PIV的计算公式如下，
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{Images/互相关示意图.png}
+    \includegraphics[width=0.6\textwidth]{Images/互相关示意图.png}
     \caption{互相关算法计算的互相关平面}
 \end{figure}
 
 \section{实验目的}
 \begin{itemize}
     \item 测试PIV测速的可行性
-    \item 验证PIV
+    \item 验证PIV测速的准确性
 \end{itemize}
 
 \section{实验内容}
@@ -66,31 +67,32 @@ PIV的计算公式如下，
 \subsection{材料清单}
 {
     \footnotesize
-    \begin{longtable}{@{} p{5cm} p{10cm} @{}}
+    \begin{longtable}{@{} p{5cm} p{10cm} p{2cm} @{}}
         \toprule
-        \textbf{材料} & \textbf{备注} \\ 
+        \textbf{材料} & \textbf{备注} & \textbf{携带情况} \\ 
         \midrule
-        聚苯乙烯微球 & 用来作为示踪粒子 \\
-        玻璃管两根 & 作为微流道，一根备用 \\
-        橡胶管两条 & 用来连接注射器，微流道，和灌流器 \\
-        灌流器 & 用来设置灌流流速 \\
-        琼脂粉 & 和水混合加热到沸腾，等到30-40°冷却就会凝固 \\
-        一把小刀 & 用来制作瓶盖缺口 \\
-        一把剪刀 & 用来剪断橡胶管 \\
-        一个离心管的瓶盖 & 用于放置玻璃管 \\
-        微波炉 & 用于加热琼脂 \\
-        天平 & 在使用之前需要在放上称量纸的情况下调零 \\ 
-        移液枪 & 在配置材料实验室里 \\ 
-        离心管（2个） & 用于配置聚苯乙烯微球溶液 \\ 
-        称量纸 & 方便倒出材料 \\ 
-        5ml 注射器（4个） & 存放聚苯乙烯微球溶液 \\ 
-        灌流器 & 位于三楼实验室抽屉 \\ 
-        空心橡胶管（2条） & 长度不能够太短 \\ 
-        3D 打印注射器喷头 & 红色，套在注射器上用于连接橡胶管 \\ 
-        纯净纸巾 & 用来擦拭漏出的溶液 \\ 
+        聚苯乙烯微球 & 用来作为示踪粒子 & $\square$ \\ 
+        玻璃管两根 & 作为微流道，一根备用 & $\square$ \\ 
+        橡胶管两条 & 用来连接注射器，微流道，和灌流器 & $\square$ \\ 
+        灌流器 & 用来设置灌流流速 & $\square$ \\ 
+        琼脂粉 & 和水混合加热到沸腾，等到30-40°冷却就会凝固 & $\square$ \\ 
+        一把小刀 & 用来制作瓶盖缺口 & $\square$ \\ 
+        一把剪刀 & 用来剪断橡胶管 & $\square$ \\ 
+        一个离心管的瓶盖 & 用于放置玻璃管 & $\square$ \\ 
+        微波炉 & 用于加热琼脂 & $\square$ \\ 
+        天平 & 在使用之前需要在放上称量纸的情况下调零 & $\square$ \\ 
+        移液枪 & 在配置材料实验室里 & $\square$\\ 
+        离心管（2个） & 用于配置聚苯乙烯微球溶液 & $\square$ \\ 
+        称量纸 & 方便倒出材料 & $\square$\\ 
+        5ml 注射器（4个） & 存放聚苯乙烯微球溶液 & $\square$ \\ 
+        灌流器 & 位于三楼实验室抽屉 & $\square$ \\ 
+        空心橡胶管（2条） & 长度不能够太短 & $\square$ \\ 
+        3D 打印注射器喷头 & 红色，套在注射器上用于连接橡胶管 & $\square$ \\ 
+        纯净纸巾 & 用来擦拭漏出的溶液 & $\square$ \\ 
         \bottomrule
-        \caption{实验材料列表} \\
+        \caption{实验材料列表}
     \end{longtable}
+    
 }
 
 \section{实验流程}
@@ -108,7 +110,7 @@ PIV的计算公式如下，
     \item 配置聚苯乙烯微球溶液
     \begin{itemize}
         \item 配置百分之10质量的微球溶液
-        \item 取5g聚苯乙烯微球，使用移液枪添加45ml取离子水
+        \item 取5g聚苯乙烯微球，使用移液枪添加45ml去离子水
         \item 需要搅拌均匀
     \end{itemize}
 
@@ -143,8 +145,8 @@ PIV的计算公式如下，
     \item 搭建灌流平台
     \begin{itemize}
         \item 将直流通道和灌流设备连接起来
-        \item 往流道里面注入溶液
-        \item 设置不同的灌流流速,使用如下公式来计算对应流速的灌流量,其中L表示灌流量，单位是ul/min,r表示半径，单位是mm，v表示流速，单位是mm/s。其中，玻璃管的内半径是0.45mm。根据这个公式设置对应的灌流量,每组流速重复测量4次。届时可以计算均值和方差。
+        \item 使用灌流器配合注射器往流道里面注入溶液
+        \item 设置不同的灌流流速,使用如下公式来计算对应流速的灌流量,其中L表示灌流量，单位是ul/min,r表示半径，单位是mm，v表示流速，单位是mm/s。其中，玻璃管的内半径是0.45mm。根据该公式设置对应的灌流量,每组流速重复测量4次，届时可以计算均值和方差。
         \begin{equation}
             L=60 \pi r^2 v
         \end{equation}
@@ -170,8 +172,15 @@ PIV的计算公式如下，
         \item 等到流速稳定之后开始采集数据
         \item 找到像，我们应该找到正像，通过显微镜镜头找到正像（从摄像头看，显微镜达到对扫描物体的聚焦比较清楚），然后将物体移动到强度最高的位置（注意，会呈现两个像，一个正像一个反像，这是由于光程差存在正反像）。
         \item 调整像素个数，让成像更加清晰，或者通过固定像素实际大小和视场来自动得到像素值。
-        \item 开始采集数据2D界面数据（之所以采集2D，是为了测试该方法的可行性）。
-        \item 通过实验室的电脑将图片导出来。共同保存到Images文件夹当中。
+        
+        \item 开始采集数据2D界面数据（之所以采集2D，是为了测试该方法的可行性）。和以往不同，本次我们采集是采集截面图的图像。这样才方便追踪粒子的路径
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.6\textwidth]{Images/OCT扫描示意图.png}
+            \caption{OCT扫描示意图 横截面扫描}
+
+        \end{figure}
+        \item 通过实验室的电脑将OCT图片导出来。共同保存到Images文件夹当中。
         \item 每个灌流量，需要重复采集4次（为了后面建立方差和均值模型）。
         \item 实验采集数据完毕。
     \end{itemize}
@@ -193,7 +202,7 @@ PIV的计算公式如下，
     \item 集成相关PIV算法。为了防止有的地方没有粒子或者粒子较少导致的速度测量不准确的问题。为了能够准确测量位移。需要综合多次的测量结果。
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.8\textwidth]{Images/累加PIV原理展示.png}
+        \includegraphics[width=0.7\textwidth]{Images/累加PIV原理展示.png}
         \caption{累加PIV原理展示}
     \end{figure}
     \item 多窗口PIV。为了能够更加精细地反映流速。我们使用了多窗口。逐步加大流场的精细度，如下图所示。
@@ -219,24 +228,17 @@ PIV的计算公式如下，
         \caption{计算出来的流场示意图}
     \end{figure}
     
-    \item 提取出来相应的信息用来分析流场，包括散点图等等东西
+    \item 提取出来相应的信息用来分析流场，包括散点图等内容
     \item 通过PIV提取出来感兴趣区域的流速均值，在数据预处理部分，或者后面的画图进行展示
     \item 根据多组流速计算流速的方差。
     \item 我们最终会导出该过程用到的各种数据，到我们的工作表当中，根据工作表，我们也能够进行分析
 \end{enumerate}
 
-\section{可能的意外与应对措施}
-\begin{itemize}
-    \item 配材料室没开门（等待 可能有人在休息）
-    \item 中间遇到的会议（看情况，如果会议紧急的话先去开会议，否则可以请假）
-\end{itemize}
 
-\section{参考文献}
 
 \begin{itemize}
-    \item 基于 CCd-OCTA 的三维流场成像技术及其对3D打印类血管网的研究 
-    \item VisTa
     \item Optical coherence tomography based particle image velocimetry (OCT-PIV) of polymer flows
-\end{itemize}
-
+    \item 基于 CCd-OCTA 的三维流场成像技术及其对3D打印类血管网的研究 
+    \item Vista
+    \end{itemize}
 \end{document}
